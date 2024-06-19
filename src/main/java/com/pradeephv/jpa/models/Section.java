@@ -27,6 +27,8 @@ public class Section {
     @JoinColumn(
             name = "course_id"
     )
-    private Course
-            courses;
+    private Course courses;
+
+    @OneToMany(mappedBy = "section")
+    private List<Lecture> lectures;
 }

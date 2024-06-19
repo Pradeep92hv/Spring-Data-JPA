@@ -1,8 +1,6 @@
 package com.pradeephv.jpa.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,4 +23,10 @@ public class Resource {
     private String url;
 
     private int size;
+
+    @OneToOne
+    @JoinColumn(name = "lecture_id")
+   private Lecture lecture;
+
+
 }
