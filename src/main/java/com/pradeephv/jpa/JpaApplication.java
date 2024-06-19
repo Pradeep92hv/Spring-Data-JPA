@@ -24,6 +24,7 @@ public class JpaApplication {
 		return args -> {
 			var author = Author.builder()
 					.firstName("pradee")
+
 					.lastName("hv")
 					.age(20)
 					.email("p@gmail.com")
