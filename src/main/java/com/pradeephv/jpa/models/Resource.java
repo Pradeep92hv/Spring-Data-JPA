@@ -1,7 +1,10 @@
 package com.pradeephv.jpa.models;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @Data
@@ -9,9 +12,12 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @Entity
 @SuperBuilder
-@EqualsAndHashCode(callSuper = true)
-public class Resource extends  BaseEntity{
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Resource {
 
+    @Id
+    @GeneratedValue
+    private Integer id;
 
     private  String name;
 
