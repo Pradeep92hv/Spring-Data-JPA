@@ -27,7 +27,7 @@ public class JpaApplication {
 					.lastName("hv")
 					.age(20)
 					.email("p@gmail.com")
-					.createdAt(LocalDateTime.now()) // Set createdAt explicitly
+//					.createdAt(LocalDateTime.now()) // Set createdAt explicitly
 					.build();
 			repository.save(author);
 		};

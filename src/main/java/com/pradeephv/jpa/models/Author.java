@@ -21,7 +21,6 @@ public class Author {
 // sequenceName = "author_sequence",
 // allocationSize = 2
 // )
-
     private Integer id;
 
     @Column(name = "f_name", length = 35)
@@ -34,7 +33,7 @@ public class Author {
 
     private int age;
 
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = true)
     private LocalDateTime createdAt;
 
     @Column(insertable = false)
