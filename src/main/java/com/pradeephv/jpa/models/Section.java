@@ -23,9 +23,10 @@ public class Section {
 
     private int oder;
 
-//    @ManyToOne
-//    @JoinColumn(
-//            name = "course_id"
-//    )
-//    private List<Course> courses;
+    @ManyToOne
+    @JoinColumn(
+            name = "course_id"
+    )
+    private Course
+            courses;
 }
