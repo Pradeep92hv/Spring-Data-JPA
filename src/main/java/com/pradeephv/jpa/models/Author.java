@@ -1,29 +1,20 @@
 package com.pradeephv.jpa.models;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)  //to use  inheritence
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Data
 @Table(name = "AUTHOR_TBL")
 @Entity
-public class Author {
+public class Author extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    // (strategy = GenerationType.SEQUENCE,
-// generator = "author_sequence"
-// )
-// //to create out own sequence
-// @SequenceGenerator(
-// name = "author_sequence",
-// sequenceName = "author_sequence",
-// allocationSize = 2
-// )
-    private Integer id;
 
     @Column(name = "f_name", length = 35)
     private String firstName;
