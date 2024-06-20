@@ -7,10 +7,12 @@ import com.pradeephv.jpa.repositories.AuthorRespository;
 
 import com.pradeephv.jpa.repositories.VideoRespository;
 import com.pradeephv.jpa.service.AuthorService;
+import com.pradeephv.jpa.specification.AuthorSpecification;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,10 +28,21 @@ public class JpaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AuthorService authorService) {
+	public CommandLineRunner commandLineRunner(
+			AuthorService authorService,
+			AuthorRespository respository
+	) {
 		return args -> {
-			authorService.findAuthorsByAge(36)
-					.forEach(System.out::println);
+//			authorService.findAuthorsByAge(36)
+//					.forEach(System.out::println);
+
+			Specification<Author> spec=Specification
+					.where(AuthorSpecification.hasage(36))
+					.or(AuthorSpecification.firstnameLike("pr"));
+
+			//respository.findAll(spec).forEach(System.out::println);
+
+
 		};
 	}
 

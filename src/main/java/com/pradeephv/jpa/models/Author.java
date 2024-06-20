@@ -18,6 +18,7 @@ import java.util.List;
         name = "Author.findByNamedQuery",
         query = "SELECT a FROM Author a LEFT JOIN FETCH a.courses WHERE a.age >= :age"
 )
+
 public class Author extends BaseEntity {
 
 
