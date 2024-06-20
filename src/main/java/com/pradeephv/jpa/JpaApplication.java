@@ -24,7 +24,7 @@ public class JpaApplication {
 		System.out.println("Hello");
 	}
 
-	//@Bean
+	@Bean
 	public CommandLineRunner commandLineRunner(
 			AuthorRespository repository,
 			VideoRespository videoRespository
@@ -39,18 +39,18 @@ public class JpaApplication {
 						.firstName(faker.name().firstName())
 						.lastName(faker.name().lastName())
 						.age(faker.number().numberBetween(20, 70))
-						.email("contact"+i+"@gmail.com")
+						.email(faker.name().firstName()+"@gmail.com")
 						.build();
 				authors.add(author);
 			}
 
-			repository.saveAll(authors);
-			System.out.println("50 authors added to the database.");
+			//repository.saveAll(authors);
+			//System.out.println("50 authors added to the database.");
 
-
-			/*var author = Author.builder()
+  // update id=1
+			var author = Author.builder()
+					.id(1)
 					.firstName("pradee")
-
 					.lastName("hv")
 					.age(20)
 					.email("p@gmail.com")
@@ -58,7 +58,7 @@ public class JpaApplication {
 					.build();
 			repository.save(author);
 
-			 */
+
 
 			/*
 			var video = Video.builder()
