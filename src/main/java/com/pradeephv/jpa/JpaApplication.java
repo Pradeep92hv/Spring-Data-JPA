@@ -48,15 +48,17 @@ public class JpaApplication {
 			//System.out.println("50 authors added to the database.");
 
   // update id=1
+
 			var author = Author.builder()
 					.id(1)
 					.firstName("pradee")
 					.lastName("hv")
 					.age(20)
 					.email("p@gmail.com")
-//					.createdAt(LocalDateTime.now()) // Set createdAt explicitly
 					.build();
-			repository.save(author);
+		//	repository.save(author);
+
+			repository.updateAuthor(100,1);
 
 
 

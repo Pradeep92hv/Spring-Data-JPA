@@ -1,7 +1,10 @@
 package com.pradeephv.jpa.repositories;
 
 import com.pradeephv.jpa.models.Author;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -18,4 +21,9 @@ public interface AuthorRespository extends JpaRepository<Author, Integer> {
     List<Author> findAllByFirstNameEndsWithIgnoreCase(String fn);
 
     List<Author> findAllByFirstNameInIgnoreCase(List<String> firstname);
+
+    @Modifying
+    @Transactional
+    @Query("update Author a set a.age= :age where a.id= :id")
+    int updateAuthor(int age,int id);
 }
