@@ -13,6 +13,7 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "resource_type", discriminatorType = DiscriminatorType.STRING) // Example with DiscriminatorType.STRING
 public class Resource {
 
     @Id

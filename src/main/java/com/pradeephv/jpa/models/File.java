@@ -1,5 +1,6 @@
 package com.pradeephv.jpa.models;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +14,7 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
+@DiscriminatorValue("F")
 public class File extends  Resource{
 
     private String type;

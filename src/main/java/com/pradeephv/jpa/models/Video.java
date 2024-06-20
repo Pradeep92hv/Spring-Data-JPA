@@ -1,5 +1,7 @@
 package com.pradeephv.jpa.models;
 
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -10,6 +12,7 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
+@DiscriminatorValue("V")
 public class Video  extends Resource{
 
     private int length;

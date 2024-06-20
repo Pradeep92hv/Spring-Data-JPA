@@ -1,8 +1,10 @@
 package com.pradeephv.jpa;
 
 import com.pradeephv.jpa.models.Author;
+import com.pradeephv.jpa.models.Video;
 import com.pradeephv.jpa.repositories.AuthorRespository;
 
+import com.pradeephv.jpa.repositories.VideoRespository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,9 +22,12 @@ public class JpaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AuthorRespository repository) {
+	public CommandLineRunner commandLineRunner(
+			AuthorRespository repository,
+			VideoRespository videoRespository
+			) {
 		return args -> {
-			var author = Author.builder()
+			/*var author = Author.builder()
 					.firstName("pradee")
 
 					.lastName("hv")
@@ -31,6 +36,16 @@ public class JpaApplication {
 //					.createdAt(LocalDateTime.now()) // Set createdAt explicitly
 					.build();
 			repository.save(author);
+
+			 */
+
+			var video = Video.builder()
+					.name("abc")
+					.length(5)
+					.build();
+			videoRespository.save(video);
+//			logger.info("Video saved successfully with ID: {}", video.getId());
+
 		};
 	}
 
