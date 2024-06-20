@@ -6,6 +6,7 @@ import com.pradeephv.jpa.models.Video;
 import com.pradeephv.jpa.repositories.AuthorRespository;
 
 import com.pradeephv.jpa.repositories.VideoRespository;
+import com.pradeephv.jpa.service.AuthorService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,53 +26,10 @@ public class JpaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(
-			AuthorRespository repository,
-			VideoRespository videoRespository
-			) {
+	public CommandLineRunner commandLineRunner(AuthorService authorService) {
 		return args -> {
-
-			Faker faker=new Faker();
-			List<Author> authors = new ArrayList<>();
-
-			for (int i = 0; i < 50; i++) {
-				Author author = Author.builder()
-						.firstName(faker.name().firstName())
-						.lastName(faker.name().lastName())
-						.age(faker.number().numberBetween(20, 70))
-						.email(faker.name().firstName()+"@gmail.com")
-						.build();
-				authors.add(author);
-			}
-
-			//repository.saveAll(authors);
-			//System.out.println("50 authors added to the database.");
-
-  // update id=1
-
-			var author = Author.builder()
-					.id(1)
-					.firstName("pradee")
-					.lastName("hv")
-					.age(20)
-					.email("p@gmail.com")
-					.build();
-		//	repository.save(author);
-
-			repository.updateAuthor(100,1);
-
-
-
-			/*
-			var video = Video.builder()
-					.name("abhhhc")
-					.length(5)
-					.build();
-			videoRespository.save(video);
-//			logger.info("Video saved successfully with ID: {}", video.getId());
-
-			 */
-
+			authorService.findAuthorsByAge(36)
+					.forEach(System.out::println);
 		};
 	}
 
